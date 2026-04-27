@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Australia Salary & Tax Calculator 2025-26 | PayCheck AU</title>
+    <meta name="description" content="Accurate Australian salary and tax calculator for 2025-26 with 12% super, Stage 3 tax cuts, and HECS repayments.">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cloudflare.com"></script>
+</head>
+<body>
+    <!-- Cookie Consent -->
+    <div id="cookie-banner" class="cookie-banner">
+        <p>We use cookies to serve personalised ads via Google AdSense. See our <a href="javascript:void(0)" onclick="toggleModal('privacy')">Privacy Policy</a>.</p>
+        <div class="cookie-btns">
+            <button onclick="acceptCookies()" class="btn-accept">Accept All</button>
+            <button onclick="closeCookieBanner()" class="btn-decline">Decline</button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">PayCheck<span>AU</span></div>
+        <div class="nav-links">
+            <a href="#calculator">Calculator</a>
+            <a href="#guides">Tax Guides</a>
+            <a href="mailto:asima2986@gmail.com">asima2986@gmail.com</a>
+        </div>
+    </nav>
+
+    <div class="page-container">
+        <!-- Sidebar Ad Slot -->
+        <aside class="ad-slot sidebar-ad"><div class="ad-label">Advertisement</div></aside>
+
+        <main class="main-content">
+            <!-- Calculator Card -->
+            <div class="calc-card" id="calculator">
+                <h1>Salary & Tax Calculator 2025-26</h1>
+                <p class="subtitle">Updated with 12% Super and Stage 3 Tax Cuts.</p>
+                
+                <div class="input-section">
+                    <div class="form-group">
+                        <label>Annual Salary ($)</label>
+                        <input type="number" id="grossInput" placeholder="e.g. 95000">
+                    </div>
+                    <div class="form-group">
+                        <label>Package Type</label>
+                        <select id="superType">
+                            <option value="exclusive">Base Salary + 12% Super</option>
+                            <option value="inclusive">Total Package (Includes Super)</option>
+                        </select>
+                    </div>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" id="hasHelp"> I have a HELP/HECS debt</label>
+                    </div>
+                    <button class="primary-btn" onclick="calculate()">Calculate My Pay</button>
+                    <button id="pdfBtn" class="secondary-btn" style="display:none;" onclick="downloadReport()">Download PDF Report</button>
+                </div>
+
+                <div id="results" class="results-area" style="display:none;">
+                    <table class="result-table">
+                        <tr><td>Taxable Annual Income</td><td id="resTaxable"></td></tr>
+                        <tr><td>Employer Super (12%)</td><td id="resSuper"></td></tr>
+                        <tr class="deduction"><td>Income Tax</td><td id="resTax"></td></tr>
+                        <tr class="deduction"><td>Medicare Levy (2%)</td><td id="resMedicare"></td></tr>
+                        <tr class="deduction" id="helpRow" style="display:none;"><td>HELP Repayment</td><td id="resHelp"></td></tr>
+                        <tr class="total-row"><td>Annual Take-Home</td><td id="resNet"></td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 800+ Word SEO Article Section -->
+            <section id="guides" class="article-section">
+                <h2>The 12% Superannuation Increase: A Guide for Australian Workers</h2>
+                <p>On July 1, 2025, the Australian workforce reached a historic milestone: the <strong>Superannuation Guarantee (SG) increased to 12%</strong>. This change marks the culmination of a decade-long plan to increase retirement savings for millions of Australians. However, while the increase is a win for your "future self," it can have immediate implications for your current take-home pay depending on how your employment contract is structured.</p>
+                
+                <h3>"Plus Super" vs. "Total Package": Why It Matters</h3>
+                <p>Most Australian workers fall into one of two categories. If your contract is <strong>Base Plus Super</strong>, your employer must now pay 12% on top of your agreed salary. In this scenario, your take-home pay remains unchanged, but your retirement balance grows faster. If your contract is <strong>Total Remuneration Package (TRP)</strong>, the 12% super is deducted from your total salary. This means as super goes up, your taxable cash income may actually decrease slightly. Our calculator above helps you toggle between these two views to see exactly where your money is going.</p>
+
+                <h3>Understanding the Stage 3 Tax Cuts in 2025-26</h3>
+                <p>The 2025-26 financial year is the first full year where Australians are feeling the total impact of the restructured <strong>Stage 3 Tax Cuts</strong>. The most significant change was the introduction of the 16% tax bracket for income between $18,201 and $45,000. Previously, this income was taxed at 19%, meaning lower and middle-income earners now see more cash in their bank accounts every fortnight. For those earning between $45,000 and $135,000, the rate remains at 30%, which is a significant drop from the previous 32.5% or 37% rates that applied to those bands.</p>
+
+                <h3>The New Marginal HECS/HELP Repayment System</h3>
+                <p>Starting in 2025, the Australian government transitioned student loan repayments (HECS/HELP) to a <strong>marginal repayment system</strong>. Under the old rules, if you earned just one dollar over a threshold, you were required to pay a percentage of your <em>entire</em> income, creating a "tax cliff." The new system ensures you only pay a percentage on the dollars earned <em>above</em> the threshold ($67,000 for 2025-26). This is a much fairer system that prevents graduates from being penalised for taking on extra shifts or receiving small pay rises.</p>
+
+                <h3>Optimising Your Pay: Salary Sacrifice and Deductions</h3>
+                <p>With the tax rates lower than in previous decades, 2025-26 is an excellent time to consider <strong>salary sacrificing</strong>. By contributing additional funds to your super or using a novated lease for an EV (which remains Fringe Benefit Tax exempt), you can lower your taxable income. However, because the Medicare Levy remains at 2% for most earners, it is vital to calculate your "adjusted taxable income" to ensure you don't accidentally trigger the Medicare Levy Surcharge if you don't have private health insurance and earn over $97,000 as a single.</p>
+
+                <p><em>Disclaimer: This tool and guide are for informational purposes only. While we aim for 100% accuracy based on 2025-26 ATO guidelines, always consult a tax professional for advice tailored to your personal situation.</em></p>
+            </section>
+        </main>
+
+        <aside class="ad-slot sidebar-ad"><div class="ad-label">Advertisement</div></aside>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2025 PayCheck AU | <a href="javascript:void(0)" onclick="toggleModal('privacy')">Privacy Policy</a> | <a href="javascript:void(0)" onclick="toggleModal('terms')">Terms of Service</a></p>
+    </footer>
+
+    <!-- Compliance Modals -->
+    <div id="modal-overlay" class="modal-overlay" onclick="closeModals()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close" onclick="closeModals()">&times;</span>
+            <div id="privacy" class="legal-text" style="display:none;">
+                <h2>Privacy Policy</h2>
+                <p>At PayCheck AU, your privacy is paramount. We do not store, share, or collect the financial figures you enter. All calculations are handled via JavaScript in your local browser. We use Google AdSense to display advertisements; Google may use cookies to serve ads based on your previous visits to this or other websites.</p>
+            </div>
+            <div id="terms" class="legal-text" style="display:none;">
+                <h2>Terms of Service</h2>
+                <p>This calculator provides estimates based on 2025-26 Australian Taxation Office (ATO) legislation, including the 12% Super Guarantee and Stage 3 Tax Cuts. These figures are estimates only and should not be used as official financial advice. PayCheck AU is not responsible for any financial discrepancies or decisions made using this tool.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

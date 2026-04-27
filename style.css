@@ -1,0 +1,20 @@
+:root { --blue: #0061ff; --dark: #1e293b; --light: #f8fafc; --red: #e11d48; --green: #10b981; }
+body { font-family: 'Inter', sans-serif; background: var(--light); margin: 0; }
+
+.cookie-banner { position: fixed; bottom: 0; left: 0; width: 100%; background: white; padding: 20px; box-shadow: 0 -4px 15px rgba(0,0,0,0.1); display: none; z-index: 2000; align-items: center; justify-content: space-around; flex-wrap: wrap; }
+.btn-accept { background: var(--blue); color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+.btn-decline { background: #e2e8f0; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; }
+
+.navbar { background: white; padding: 1rem 5%; display: flex; justify-content: space-between; border-bottom: 1px solid #e2e8f0; }
+.logo span { color: var(--blue); }
+.page-container { display: grid; grid-template-columns: 180px 1fr 180px; gap: 25px; max-width: 1400px; margin: 40px auto; padding: 0 20px; }
+.ad-slot { background: #f1f5f9; border: 1px dashed #cbd5e1; border-radius: 8px; min-height: 600px; text-align: center; }
+
+.calc-card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+.primary-btn { width: 100%; background: var(--blue); color: white; padding: 16px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+.result-table { width: 100%; margin-top: 20px; border-collapse: collapse; }
+.result-table td { padding: 12px 0; border-bottom: 1px solid #f1f5f9; }
+.total-row td { font-size: 1.4rem; color: var(--green); font-weight: bold; border: none; }
+
+.modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 3000; justify-content: center; align-items: center; }
+.modal-content { background: white; padding: 30px; border-radius: 12px; max-width: 500px; position: relative; }
