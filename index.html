@@ -1,41 +1,158 @@
-<section class="savings-visualization">
-    <div class="viz-header">
-        <h2>Your 2026 Tax Relief at a Glance</h2>
-        <p>Based on a standard A$100,000 annual salary</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSTraders Tax Tools | 2026 Salary & Tax Calculator Australia</title>
+    <meta name="description" content="Calculate your 2025-26 take-home pay with Stage 3 Tax Cuts, 12% Super, and HECS marginal reforms.">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- SEO Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "SSTraders 2026 Tax Calculator",
+      "operatingSystem": "Web Browser",
+      "applicationCategory": "FinanceApplication",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "AUD"}
+    }
+    </script>
+    
+    <!-- AdSense Script (Replace with your ID) -->
+    <script async src="https://googlesyndication.com" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">SSTraders<span>Tax</span></div>
+            <ul class="nav-links">
+                <li><a href="#calculator">Calculator</a></li>
+                <li><a href="#guide">Guide</a></li>
+                <li><a href="https://github.io" target="_blank" class="nav-special">ForexHub Pro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Ad Slot: Top Leaderboard -->
+    <div class="ad-container">
+        <span class="ad-label">Advertisement</span>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXX" data-ad-slot="111" data-ad-format="auto"></ins>
     </div>
 
-    <div class="chart-wrapper">
-        <!-- 2024 Column -->
-        <div class="chart-column">
-            <div class="bar-container">
-                <div class="bar bar-old" style="height: 100%;">
-                    <span class="bar-value">A$22,967</span>
+    <main>
+        <section id="calculator" class="hero">
+            <div class="hero-content">
+                <h1>Salary & Tax Calculator <span>2025-26</span></h1>
+                <p>Updated for 12% Super, Stage 3 Tax Cuts, and HECS Marginal Repayments.</p>
+            </div>
+
+            <div class="calc-grid">
+                <!-- CALCULATOR CARD -->
+                <div class="calc-card">
+                    <div class="input-group">
+                        <label>Annual Gross Salary (A$)</label>
+                        <input type="number" id="salary" placeholder="e.g. 95000">
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Household</label>
+                            <select id="household">
+                                <option value="single">Single</option>
+                                <option value="family">Family/Couple</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Private Health?</label>
+                            <select id="privateHealth">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-group checkbox-group">
+                        <label><input type="checkbox" id="hasHECS"> I have a HELP/HECS Debt</label>
+                    </div>
+
+                    <button onclick="calculateTax()" class="btn-primary">Calculate My Pay</button>
+
+                    <div id="results" class="results-area hidden">
+                        <div class="result-display">
+                            <div class="res-row"><span>Total Estimated Tax:</span> <strong id="tax-amt">$0</strong></div>
+                            <div class="res-row highlight"><span>Net Take-home Pay:</span> <strong id="net-pay">$0</strong></div>
+                            <div class="res-row small"><span>Employer Super (12%):</span> <span id="super-amt">$0</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CODE-BASED TAX GRAPH (No Image Needed) -->
+                <div class="seo-sidebar">
+                    <div class="visual-graph-container">
+                        <h4 class="graph-title">Annual Tax Comparison</h4>
+                        <div class="bar-chart">
+                            <div class="bar-group">
+                                <div class="bar-label-top">$22,967</div>
+                                <div class="bar-fill bar-2024"></div>
+                                <div class="bar-year">2024</div>
+                            </div>
+                            <div class="savings-indicator">
+                                <span class="save-tag">SAVE $2,188</span>
+                                <div class="save-arrow">↓</div>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar-label-top">$20,779</div>
+                                <div class="bar-fill bar-2026"></div>
+                                <div class="bar-year">2026</div>
+                            </div>
+                        </div>
+                        <p class="graph-caption">Example based on A$100,000 salary under new legislation.</p>
+                    </div>
                 </div>
             </div>
-            <span class="bar-label">Tax Paid (2024)</span>
-        </div>
+        </section>
 
-        <!-- The "Savings" Gap -->
-        <div class="savings-gap">
-            <div class="savings-amount">
-                <span class="arrow-down">▼</span>
-                <span class="save-val">A$2,188</span>
-                <span class="save-text">ANNUAL SAVING</span>
-            </div>
-        </div>
-
-        <!-- 2026 Column -->
-        <div class="chart-column">
-            <div class="bar-container">
-                <div class="bar bar-new" style="height: 90%;">
-                    <span class="bar-value">A$20,779</span>
+        <!-- Fancy External Link Section -->
+        <section class="promo-section">
+            <div class="promo-card">
+                <div class="promo-text">
+                    <span class="badge">Ecosystem Tool</span>
+                    <h2>Global Forex & Currency Hub</h2>
+                    <p>Compare live exchange rates and institutional market analytics on our partner platform.</p>
+                    <a href="https://github.io" target="_blank" class="btn-glow">Explore ForexHub Pro →</a>
+                </div>
+                <div class="promo-visual">
+                    <div class="viz-bar" style="height: 30%"></div>
+                    <div class="viz-bar" style="height: 60%"></div>
+                    <div class="viz-bar" style="height: 80%"></div>
                 </div>
             </div>
-            <span class="bar-label">Tax Paid (2026)</span>
-        </div>
-    </div>
+        </section>
 
-    <div class="chart-footer">
-        <p>Stage 3 Tax Cuts effectively lower the 32.5% bracket to <strong>30%</strong> and expand thresholds.</p>
-    </div>
-</section>
+        <!-- SEO Content Guide -->
+        <section id="guide" class="seo-content">
+            <h2>Understanding the 2026 Australian Tax Reforms</h2>
+            <p>From July 1, 2025, the <strong>Stage 3 Tax Cuts</strong> and <strong>12% Superannuation Guarantee</strong> have redefined take-home pay. Middle earners now benefit from a lower 16% base rate and a widened 30% bracket. Additionally, the shift to <strong>Marginal HECS Repayments</strong> provides vital relief for graduates by calculating debt repayments only on income earned above the threshold.</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <h3>SSTraders<span>Tax</span></h3>
+                <p>Support: sstraders.education@gmail.com</p>
+            </div>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms & Conditions</a>
+            </div>
+        </div>
+        <p class="legal">© 2026 SSTraders Education. Estimates only. Not financial advice.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
