@@ -1,0 +1,41 @@
+<section class="savings-visualization">
+    <div class="viz-header">
+        <h2>Your 2026 Tax Relief at a Glance</h2>
+        <p>Based on a standard A$100,000 annual salary</p>
+    </div>
+
+    <div class="chart-wrapper">
+        <!-- 2024 Column -->
+        <div class="chart-column">
+            <div class="bar-container">
+                <div class="bar bar-old" style="height: 100%;">
+                    <span class="bar-value">A$22,967</span>
+                </div>
+            </div>
+            <span class="bar-label">Tax Paid (2024)</span>
+        </div>
+
+        <!-- The "Savings" Gap -->
+        <div class="savings-gap">
+            <div class="savings-amount">
+                <span class="arrow-down">▼</span>
+                <span class="save-val">A$2,188</span>
+                <span class="save-text">ANNUAL SAVING</span>
+            </div>
+        </div>
+
+        <!-- 2026 Column -->
+        <div class="chart-column">
+            <div class="bar-container">
+                <div class="bar bar-new" style="height: 90%;">
+                    <span class="bar-value">A$20,779</span>
+                </div>
+            </div>
+            <span class="bar-label">Tax Paid (2026)</span>
+        </div>
+    </div>
+
+    <div class="chart-footer">
+        <p>Stage 3 Tax Cuts effectively lower the 32.5% bracket to <strong>30%</strong> and expand thresholds.</p>
+    </div>
+</section>
