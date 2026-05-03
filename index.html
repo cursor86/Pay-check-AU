@@ -1,187 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SSTraders Tax Tools | 2026 Salary & Tax Calculator Australia</title>
-    <meta name="description" content="Calculate your 2025-26 take-home pay with Stage 3 Tax Cuts, 12% Super, and HECS marginal reforms.">
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- Schema.org for SEO -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "SSTraders 2026 Tax Calculator",
-      "operatingSystem": "Web Browser",
-      "applicationCategory": "FinanceApplication",
-      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "AUD"}
-    }
-    </script>
-    
-    <!-- AdSense Script (Replace with your actual ID) -->
-    <script async src="https://googlesyndication.com" crossorigin="anonymous"></script>
-</head>
-<body>
-
-    <header>
-        <nav class="navbar">
-            <div class="logo">SSTraders<span>Tax</span></div>
-            <ul class="nav-links">
-                <li><a href="#calculator">Calculator</a></li>
-                <li><a href="#guide">Guide</a></li>
-                <li><a href="https://github.io" target="_blank" class="nav-special">ForexHub Pro</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Ad Slot: Top Leaderboard -->
-    <div class="ad-container">
-        <span class="ad-label">Advertisement</span>
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXX" data-ad-slot="111" data-ad-format="auto"></ins>
+<section class="savings-visualization">
+    <div class="viz-header">
+        <h2>Your 2026 Tax Relief at a Glance</h2>
+        <p>Based on a standard A$100,000 annual salary</p>
     </div>
 
-    <main>
-        <!-- Hero & Calculator Section -->
-        <section id="calculator" class="hero">
-            <div class="hero-content">
-                <h1>Salary & Tax Calculator <span>2025-26</span></h1>
-                <p>Updated for 12% Super, Stage 3 Tax Cuts, and HECS Marginal Repayments.</p>
-            </div>
-
-            <div class="calc-grid">
-                <div class="calc-card">
-                    <div class="input-group">
-                        <label>Annual Gross Salary (A$)</label>
-                        <input type="number" id="salary" placeholder="e.g. 95000">
-                    </div>
-
-                    <div class="input-row">
-                        <div class="input-group">
-                            <label>Household</label>
-                            <select id="household">
-                                <option value="single">Single</option>
-                                <option value="family">Family/Couple</option>
-                            </select>
-                        </div>
-                        <div class="input-group">
-                            <label>Private Health?</label>
-                            <select id="privateHealth">
-                                <option value="yes">Yes</option>
-                                <option value="no">No</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="input-group checkbox-group">
-                        <label><input type="checkbox" id="hasHECS"> I have a HELP/HECS Debt</label>
-                    </div>
-
-                    <button onclick="calculateTax()" class="btn-primary">Calculate My Pay</button>
-
-                    <div id="results" class="results-area hidden">
-                        <div class="result-display">
-                            <div class="res-row"><span>Total Estimated Tax:</span> <strong id="tax-amt">$0</strong></div>
-                            <div class="res-row highlight"><span>Net Take-home Pay:</span> <strong id="net-pay">$0</strong></div>
-                            <div class="res-row small"><span>Employer Super (12%):</span> <span id="super-amt">$0</span></div>
-                        </div>
-                    </div>
+    <div class="chart-wrapper">
+        <!-- 2024 Column -->
+        <div class="chart-column">
+            <div class="bar-container">
+                <div class="bar bar-old" style="height: 100%;">
+                    <span class="bar-value">A$22,967</span>
                 </div>
-
-                <div class="seo-sidebar">
-                    <<div class="visual-graph-container">
-    <h4 class="graph-title">Annual Tax Comparison</h4>
-    <div class="bar-chart">
-        <!-- 2024 Bar -->
-        <div class="bar-group">
-            <div class="bar-label-top">$22,967</div>
-            <div class="bar-fill bar-2024" style="height: 100%;"></div>
-            <div class="bar-year">2024</div>
-        </div>
-        
-        <!-- Savings Indicator -->
-        <div class="savings-indicator">
-            <span class="save-tag">SAVE $2,188</span>
-            <div class="save-arrow">↓</div>
+            </div>
+            <span class="bar-label">Tax Paid (2024)</span>
         </div>
 
-        <!-- 2026 Bar -->
-        <div class="bar-group">
-            <div class="bar-label-top">$20,779</div>
-            <div class="bar-fill bar-2026" style="height: 90%;"></div>
-            <div class="bar-year">2026</div>
+        <!-- The "Savings" Gap -->
+        <div class="savings-gap">
+            <div class="savings-amount">
+                <span class="arrow-down">▼</span>
+                <span class="save-val">A$2,188</span>
+                <span class="save-text">ANNUAL SAVING</span>
+            </div>
+        </div>
+
+        <!-- 2026 Column -->
+        <div class="chart-column">
+            <div class="bar-container">
+                <div class="bar bar-new" style="height: 90%;">
+                    <span class="bar-value">A$20,779</span>
+                </div>
+            </div>
+            <span class="bar-label">Tax Paid (2026)</span>
         </div>
     </div>
-    <p class="graph-caption">Example based on A$100,000 salary</p>
-</div>
-">
-                    <div class="sidebar-note">
-                        <h4>Expert Insight</h4>
-                        <p>Most workers earning $45k–$135k see their tax rate drop to 30% this year.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Fancy Link to ForexHub -->
-        <section class="promo-section">
-            <div class="promo-card">
-                <div class="promo-text">
-                    <span class="badge">Ecosystem Tool</span>
-                    <h2>Global Forex & Currency Hub</h2>
-                    <p>Trading or sending money overseas? Access real-time exchange rates and institutional market analytics.</p>
-                    <a href="https://github.io" target="_blank" class="btn-glow">Explore ForexHub Pro →</a>
-                </div>
-                <div class="promo-visual">
-                    <div class="viz-bar" style="height: 30%"></div>
-                    <div class="viz-bar" style="height: 60%"></div>
-                    <div class="viz-bar" style="height: 45%"></div>
-                    <div class="viz-bar" style="height: 80%"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SEO Data Table -->
-        <section class="table-section">
-            <h2>2026 Legislative Comparison</h2>
-            <table>
-                <thead><tr><th>Feature</th><th>Old (2024)</th><th>New (2026)</th><th>Benefit</th></tr></thead>
-                <tbody>
-                    <tr><td>Super Guarantee</td><td>11.0%</td><td>12.0%</td><td class="green">Higher Retirement Savings</td></tr>
-                    <tr><td>Primary Tax Rate</td><td>32.5%</td><td>30.0%</td><td class="green">2.5% Direct Savings</td></tr>
-                    <tr><td>HECS Logic</td><td>Flat Rate</td><td>Marginal</td><td class="green">Cost of Living Relief</td></tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- Ad Slot: Mid Content -->
-        <div class="ad-container">
-            <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-6t+ed+2i-1n-4w" data-ad-client="ca-pub-XXX" data-ad-slot="222"></ins>
-        </div>
-
-        <!-- SEO Educational Content -->
-        <section id="guide" class="seo-content">
-            <h2>Understanding Your 2026 Pay Slip</h2>
-            <p>The 2025-26 Australian financial year introduces the most significant tax reforms in a decade. By lowering the 19% bracket to <strong>16%</strong> and capping the middle bracket at <strong>30%</strong> for incomes up to $135,000, the government has increased disposable income for millions. Furthermore, the <strong>12% Superannuation Guarantee</strong> ensures your future self is protected, while the shift to <strong>Marginal HECS Repayments</strong> ensures that pay rises no longer result in disproportionately high debt repayments.</p>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <h3>SSTraders<span>Tax</span></h3>
-                <p>Financial education for the modern worker.</p>
-            </div>
-            <div class="footer-links">
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Service</a>
-                <a href="mailto:sstraders.education@gmail.com">Contact Us</a>
-            </div>
-        </div>
-        <p class="legal">© 2026 SSTraders Education. Estimates only. Not financial advice.</p>
-    </footer>
-
-    <script src="script.js"></script>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</body>
-</html>
+    <div class="chart-footer">
+        <p>Stage 3 Tax Cuts effectively lower the 32.5% bracket to <strong>30%</strong> and expand thresholds.</p>
+    </div>
+</section>
