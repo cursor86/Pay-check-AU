@@ -1,33 +1,61 @@
-function calculateTax() {
-    const salary = parseFloat(document.getElementById('salary').value) || 0;
-    const hasHECS = document.getElementById('hasHECS').checked;
-    const hasPrivateHealth = document.getElementById('privateHealth').value === 'yes';
-    const isFamily = document.getElementById('household').value === 'family';
+/**
+ * SS Traders Logic Engine
+ * 1. Page Routing
+ * 2. Audio-Assist (Accessibility)
+ * 3. Cookie Compliance (AdSense Req)
+ */
 
-    if (salary <= 0) return alert("Please enter a valid salary.");
-
-    // 1. Resident Tax 2025-26
-    let incomeTax = 0;
-    if (salary > 190000) incomeTax = 51638 + (salary - 190000) * 0.45;
-    else if (salary > 135000) incomeTax = 31288 + (salary - 135000) * 0.37;
-    else if (salary > 45000) incomeTax = 4288 + (salary - 45000) * 0.30;
-    else if (salary > 18200) incomeTax = (salary - 18200) * 0.16;
-
-    // 2. Medicare & HECS
-    let medicareLevy = salary > 27222 ? salary * 0.02 : 0;
-    let hecsRepayment = (hasHECS && salary > 67000) ? (salary - 67000) * 0.15 : 0;
+// 1. Navigation Controller
+function showPage(pageId) {
+    // Hide all pages
+    const pages = document.querySelectorAll('.page-content');
+    pages.forEach(page => page.classList.remove('active'));
     
-    // 3. MLS
-    let mls = 0;
-    if (!hasPrivateHealth && salary > (isFamily ? 202000 : 101000)) {
-        mls = salary * 0.01;
+    // Show selected page
+    const target = document.getElementById(pageId);
+    if (target) {
+        target.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-
-    const totalTax = incomeTax + medicareLevy + hecsRepayment + mls;
-    
-    document.getElementById('tax-amt').innerText = `A$${Math.round(totalTax).toLocaleString()}`;
-    document.getElementById('net-pay').innerText = `A$${Math.round(salary - totalTax).toLocaleString()}`;
-    document.getElementById('super-amt').innerText = `A$${Math.round(salary * 0.12).toLocaleString()}`;
-    document.getElementById('results').classList.remove('hidden');
 }
 
+// 2. Audio-Assist "Read for Me" (Speech Synthesis)
+function readArticle() {
+    // Check if voice is already speaking to toggle off
+    if (window.speechSynthesis.speaking) {
+        window.speechSynthesis.cancel();
+        return;
+    }
+
+    const articleText = document.getElementById('main-article').innerText;
+    const utterance = new SpeechSynthesisUtterance(articleText);
+    
+    // Customizing the voice
+    utterance.lang = 'en-AU'; // Australian English
+    utterance.rate = 0.9;      // Slightly slower for clarity
+    utterance.pitch = 1.0;
+
+    window.speechSynthesis.speak(utterance);
+}
+
+// 3. Cookie Consent Management
+function acceptCookies() {
+    localStorage.setItem('ss_cookies_accepted', 'true');
+    document.getElementById('cookie-banner').style.display = 'none';
+}
+
+// Run on page load
+window.onload = function() {
+    // Check for cookie consent
+    if (!localStorage.getItem('ss_cookies_accepted')) {
+        document.getElementById('cookie-banner').style.display = 'flex';
+    }
+    
+    // Smooth scroll for footer links
+    document.querySelectorAll('footer li').forEach(item => {
+        item.addEventListener('click', () => {
+            const page = item.getAttribute('data-page');
+            if (page) showPage(page);
+        });
+    });
+};
