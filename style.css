@@ -1,82 +1,112 @@
+/* Root Variables for easy branding updates */
 :root {
-    --navy: #0a0e21;
-    --accent: #00d6b4;
-    --glass: rgba(255, 255, 255, 0.03);
-    --border: rgba(255, 255, 255, 0.1);
-    --text: #f8fafc;
+    --deep-navy: #001F3F;
+    --prof-navy: #003366;
+    --gold: #D4AF37;
+    --vibrant-black: #1A1A1A;
+    --white: #FFFFFF;
+    --gray: #F8F9FA;
+    --transition: all 0.3s ease;
 }
 
-body {
-    background-color: var(--navy);
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
-    margin: 0;
+/* Base Styles */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+    font-family: 'Inter', -apple-system, sans-serif; 
+    line-height: 1.6; 
+    color: var(--vibrant-black); 
+    background-color: var(--white);
+    overflow-x: hidden;
 }
 
-.container { max-width: 1300px; margin: 0 auto; padding: 0 20px; }
+/* Typography */
+h1, h2, h3 { color: var(--deep-navy); font-weight: 700; margin-bottom: 1.5rem; }
+p { margin-bottom: 1.2rem; font-size: 1.05rem; color: #444; }
 
-/* Ad-Friendly Layout */
-.glass-section {
-    background: var(--glass);
-    border: 1px solid var(--border);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 40px;
-    margin-bottom: 40px;
-}
-
-/* 2-Column Terminal Layout */
-.terminal-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 30px;
-}
-
-/* Professional Navigation */
-.alpha-header {
-    background: rgba(10, 14, 33, 0.9);
-    border-bottom: 1px solid var(--border);
-    padding: 20px 0;
+/* Sticky Navigation */
+header {
+    background: var(--deep-navy);
+    padding: 1rem 5%;
     position: sticky;
     top: 0;
     z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-bottom: 3px solid var(--gold);
 }
 
-.nav-grid { display: flex; justify-content: space-between; align-items: center; }
-.nav-links { display: flex; list-style: none; gap: 30px; }
-.nav-links a { color: var(--text); text-decoration: none; font-weight: 500; opacity: 0.8; }
-.nav-links a:hover { color: var(--accent); opacity: 1; }
-
-/* Bento Box Education */
-.edu-bento {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+.logo { 
+    color: var(--gold); 
+    font-size: 1.5rem; 
+    font-weight: 800; 
+    text-decoration: none; 
+    letter-spacing: 1px;
 }
 
-.bento-item {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 30px;
-    border-radius: 15px;
-    transition: transform 0.3s ease;
+nav a { 
+    color: var(--white); 
+    text-decoration: none; 
+    margin-left: 20px; 
+    font-weight: 500; 
+    cursor: pointer;
+    transition: var(--transition);
 }
 
-.bento-item:hover { transform: translateY(-5px); border: 1px solid var(--accent); }
+nav a:hover { color: var(--gold); }
 
-/* Footer Links for Compliance */
-.alpha-footer {
-    background: #050816;
-    padding: 80px 0 20px;
-    border-top: 1px solid var(--border);
-}
-.footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; }
-.footer-col h4 { color: var(--accent); margin-bottom: 20px; }
-.footer-col ul { list-style: none; padding: 0; }
-.footer-col li { margin-bottom: 12px; }
-.footer-col a { color: #94a3b8; text-decoration: none; }
+/* Layout Containers */
+.page-content { display: none; padding: 60px 10%; animation: fadeIn 0.5s ease-in; }
+.active { display: block; }
 
-@media (max-width: 850px) {
-    .calc-grid, .promo-card { grid-template-columns: 1fr; }
-    .seo-sidebar, .promo-visual { display: none; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Hero Section */
+.hero { 
+    background: linear-gradient(135deg, var(--deep-navy) 0%, var(--prof-navy) 100%);
+    color: var(--white);
+    padding: 100px 10%;
+    text-align: center;
+    border-bottom-right-radius: 80px;
 }
 
+.btn-gold { 
+    background: var(--gold); 
+    color: var(--deep-navy); 
+    padding: 16px 32px; 
+    border: none; 
+    border-radius: 4px; 
+    font-weight: 700; 
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5); }
+
+/* Cookie Consent Banner */
+#cookie-banner {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: var(--vibrant-black);
+    color: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 9999;
+    border-left: 5px solid var(--gold);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2rem; }
+    header { padding: 1rem 3%; }
+    nav a { display: none; } /* Consider a burger menu for mobile */
+}
