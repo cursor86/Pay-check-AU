@@ -40,7 +40,7 @@ function readArticle() {
 
 // 3. Cookie Consent Management
 function acceptCookies() {
-    localStorage.setItem('ss_cookies_accepted', 'true');
+    localStorage.setItem('ss_cookies_accepted','true');
     document.getElementById('cookie-banner').style.display = 'none';
 }
 
