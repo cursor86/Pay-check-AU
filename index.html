@@ -1,110 +1,128 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SSTraders Tax Tools | 2026 Salary & Tax Calculator</title>
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- AdSense Auto-Ads Script -->
-    <script async src="https://googlesyndication.com" crossorigin="anonymous"></script>
+    <title>SS Traders | High-Precision Australian Tax Tools</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        :root { --deep-navy: #001F3F; --gold: #D4AF37; --vibrant-black: #1A1A1A; --white: #FFFFFF; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--vibrant-black); background: var(--white); }
+
+        /* Navigation */
+        header { background: var(--deep-navy); padding: 1rem 5%; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--gold); }
+        .logo { color: var(--gold); font-weight: 700; text-decoration: none; font-size: 1.4rem; }
+        nav a { color: var(--white); text-decoration: none; margin-left: 20px; cursor: pointer; transition: 0.3s; }
+        nav a:hover { color: var(--gold); }
+
+        /* Page Management */
+        .page-content { display: none; padding: 60px 10%; min-height: 70vh; }
+        .active { display: block; }
+        article { max-width: 900px; margin: 0 auto; line-height: 1.8; }
+
+        /* Hero & CTA */
+        .hero { background: var(--deep-navy); color: var(--white); padding: 100px 10%; text-align: center; }
+        .btn-gold { background: var(--gold); color: var(--deep-navy); padding: 15px 30px; border: none; border-radius: 5px; font-weight: 700; cursor: pointer; margin-top: 20px; }
+
+        /* Cookie Banner */
+        #cookie-banner { position: fixed; bottom: 0; width: 100%; background: var(--vibrant-black); color: var(--white); padding: 20px; display: none; justify-content: space-between; align-items: center; z-index: 2000; border-top: 3px solid var(--gold); }
+        .cookie-btns { display: flex; gap: 10px; }
+        .btn-accept { background: var(--gold); color: var(--vibrant-black); border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; }
+
+        /* Footer */
+        footer { background: var(--deep-navy); color: var(--white); padding: 40px 10%; border-top: 5px solid var(--gold); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
+        .footer-col h4 { color: var(--gold); margin-bottom: 15px; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { cursor: pointer; margin-bottom: 8px; font-size: 0.9rem; opacity: 0.8; }
+        .footer-col li:hover { opacity: 1; color: var(--gold); }
+    </style>
 </head>
 <body>
 
+    <!-- Cookie Banner -->
+    <div id="cookie-banner">
+        <p>We use cookies to improve your experience and serve relevant ads via Google AdSense. <a onclick="showPage('privacy')" style="color:var(--gold); cursor:pointer;">Learn more</a>.</p>
+        <div class="cookie-btns">
+            <button class="btn-accept" onclick="acceptCookies()">Accept All</button>
+        </div>
+    </div>
+
     <header>
-        <nav class="navbar">
-            <div class="logo">SSTraders<span>Tax</span></div>
-            <ul class="nav-links">
-                <li><a href="#calculator">Calculator</a></li>
-                <li><a href="#guide">Guide</a></li>
-                <!-- VERIFIED FOREXHUB LINK -->
-                <li><a href="https://cursor86.github.io/Forexhub/" target="_blank" class="nav-special">ForexHub Pro</a></li>
-            </ul>
+        <a onclick="showPage('home')" class="logo">SS TRADERS</a>
+        <nav>
+            <a onclick="showPage('home')">Home</a>
+            <a onclick="showPage('about')">About Us</a>
+            <a href="mailto:sstraders.education@gmail.com" style="background:var(--vibrant-black); padding: 8px 15px; border-radius: 5px; color:var(--gold);">Email Us</a>
         </nav>
     </header>
 
-    <main>
-        <section id="calculator" class="hero">
-            <div class="hero-content">
-                <h1>Salary & Tax Calculator <span>2025-26</span></h1>
-                <p>Updated for 12% Super, Stage 3 Tax Cuts, and HECS reforms.</p>
-            </div>
+    <!-- Home Page -->
+    <div id="home" class="page-content active">
+        <div class="hero">
+            <h1>Australian Tax Calculators: The Best Tools for Freelancers</h1>
+            <p>High-precision GST & PAYG utilities for the 2025-26 Australian Financial Year.</p>
+            <button class="btn-gold" onclick="alert('Calculator Loading...')">Launch Calculator</button>
+        </div>
+        <article style="margin-top:40px;">
+            <h2>Navigating 2025-26 Compliance</h2>
+            <p>Every freelancer and investor in Australia faces a shifting landscape this year. With the final Superannuation Guarantee increase and Stage 3 tax cuts, accurate tracking is non-negotiable...</p>
+            <!-- [Include 500-word article here] -->
+        </article>
+    </div>
 
-            <div class="calc-grid">
-                <!-- Calculator Card -->
-                <div class="calc-card">
-                    <div class="input-group">
-                        <label>Annual Gross Salary (A$)</label>
-                        <input type="number" id="salary" placeholder="e.g. 95000">
-                    </div>
-                    <div class="input-row">
-                        <div class="input-group">
-                            <label>Household</label>
-                            <select id="household">
-                                <option value="single">Single</option>
-                                <option value="family">Family/Couple</option>
-                            </select>
-                        </div>
-                        <div class="input-group">
-                            <label>Private Health?</label>
-                            <select id="privateHealth">
-                                <option value="yes">Yes</option>
-                                <option value="no">No</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="input-group checkbox-group">
-                        <label><input type="checkbox" id="hasHECS"> I have a HELP/HECS Debt</label>
-                    </div>
-                    <button onclick="calculateTax()" class="btn-primary">Calculate My Pay</button>
+    <!-- About Us -->
+    <div id="about" class="page-content">
+        <article>
+            <h2>About SS Traders</h2>
+            <p>Based in Sydney, we provide data-driven tools for the modern Australian professional. Our focus is Experience, Expertise, and Trust (E-E-A-T) in the financial sector.</p>
+        </article>
+    </div>
 
-                    <div id="results" class="results-area hidden">
-                        <div class="result-display">
-                            <div class="res-row"><span>Total Estimated Tax:</span> <strong id="tax-amt">$0</strong></div>
-                            <div class="res-row highlight"><span>Net Take-home Pay:</span> <strong id="net-pay">$0</strong></div>
-                            <div class="res-row small"><span>Employer Super (12%):</span> <span id="super-amt">$0</span></div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Privacy Policy -->
+    <div id="privacy" class="page-content">
+        <article>
+            <h2>Privacy Policy</h2>
+            <p>We use third-party vendors, including Google, to serve ads based on a user's prior visits. You can opt out of personalized advertising by visiting Google Ads Settings.</p>
+        </article>
+    </div>
 
-                <!-- Code-Based Graph (Fixes broken images) -->
-                <div class="seo-sidebar">
-                    <div class="visual-graph-container">
-                        <h4 class="graph-title">Tax Comparison</h4>
-                        <div class="bar-chart">
-                            <div class="bar-group">
-                                <div class="bar-label-top">$22,967</div>
-                                <div class="bar-fill bar-2024" style="height: 140px; background: #475569;"></div>
-                                <div class="bar-year">2024</div>
-                            </div>
-                            <div class="savings-indicator">
-                                <span class="save-tag">SAVE $2,188</span>
-                                <div class="save-arrow">↓</div>
-                            </div>
-                            <div class="bar-group">
-                                <div class="bar-label-top">$20,779</div>
-                                <div class="bar-fill bar-2026" style="height: 115px; background: #00d1b2;"></div>
-                                <div class="bar-year">2026</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- Disclaimer -->
+    <div id="disclaimer" class="page-content">
+        <article>
+            <h2>General Advice Disclaimer</h2>
+            <p>Results from our calculators are estimates only. This site does not provide professional financial advice. Consult an ATO-registered tax agent before filing.</p>
+        </article>
+    </div>
 
-        <!-- Interactive Link to ForexHub -->
-        <section class="promo-section">
-            <div class="promo-card">
-                <div class="promo-text">
-                    <span class="badge">Ecosystem Tool</span>
-                    <h2>SST Platform | Global FX Dashboard</h2>
-                    <p>Moving money abroad? Compare live exchange rates and study price action analytics.</p>
-                    <a href="https://cursor86.github.io/Forexhub/" target="_blank" class="btn-glow">Explore ForexHub Pro →</a>
-                </div>
-            </div>
-        </section>
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col"><h4>Contact</h4><ul><li>sstraders.education@gmail.com</li></ul></div>
+            <div class="footer-col"><h4>Legal</h4><ul><li onclick="showPage('privacy')">Privacy Policy</li><li onclick="showPage('disclaimer')">Disclaimer</li></ul></div>
+            <div class="footer-col"><h4>About</h4><ul><li onclick="showPage('about')">About Us</li></ul></div>
+        </div>
+    </footer>
 
-        <section id="guide" class="seo-content">
+    <script>
+        function showPage(id) {
+            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            window.scrollTo(0,0);
+        }
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+        window.onload = () => {
+            if(!localStorage.getItem('cookiesAccepted')) {
+                document.getElementById('cookie-banner').style.display = 'flex';
+            }
+        };
+    </script>
+</body>
+</html>
+
             <h2>Financial Education Hub</h2>
             <p>Our commitment to global market literacy includes professional resources for <strong>Market Fundamentals</strong>, <strong>Capital Protection</strong>, and <strong>Central Bank Policies</strong>.</p>
         </section>
