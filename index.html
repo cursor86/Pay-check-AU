@@ -3,124 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SS Traders | 2026 AU Tax & Investment Hub</title>
+    <title>SS Traders | 2026 AU Tax Calculator & Investment Strategy</title>
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
         :root { --navy: #001F3F; --gold: #D4AF37; --black: #1A1A1A; --white: #FFFFFF; --gray: #F4F7F9; --success: #2E7D32; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; color: var(--black); line-height: 1.7; background: var(--white); }
+        body { font-family: 'Inter', sans-serif; color: var(--black); line-height: 1.7; background: var(--white); scroll-behavior: smooth; }
 
         /* Navigation */
         header { background: var(--navy); padding: 1rem 5%; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--gold); }
-        .logo { color: var(--gold); font-weight: 800; text-decoration: none; font-size: 1.5rem; cursor: pointer; }
+        .logo { color: var(--gold); font-weight: 800; text-decoration: none; font-size: 1.5rem; }
         nav a { color: var(--white); text-decoration: none; margin-left: 20px; font-weight: 500; cursor: pointer; }
         nav a:hover { color: var(--gold); }
 
-        /* Page Content Logic */
-        .page-content { display: none; padding-bottom: 80px; min-height: 80vh; }
+        /* Routing Logic */
+        .page-content { display: none; padding-bottom: 80px; }
         .active-page { display: block; }
 
-        /* Sections */
+        /* Hero */
         .hero { background: var(--navy); color: var(--white); padding: 80px 10%; text-align: center; border-bottom-right-radius: 80px; margin-bottom: 40px; }
         .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
-        article h2 { color: var(--navy); border-left: 5px solid var(--gold); padding-left: 15px; margin: 2.5rem 0 1rem; }
-        
+
         /* Calculator */
-        .calc-box { background: var(--gray); padding: 40px; border-radius: 15px; border: 2px solid var(--gold); box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 50px; }
+        .calc-box { background: var(--gray); padding: 40px; border-radius: 15px; border: 2px solid var(--gold); box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-top: -120px; }
         .input-group { margin-bottom: 20px; }
         input { width: 100%; padding: 15px; border: 1px solid #ccc; border-radius: 8px; font-size: 1.1rem; }
-        .btn-gold { background: var(--gold); color: var(--navy); padding: 15px 30px; border: none; border-radius: 8px; font-weight: 800; width: 100%; cursor: pointer; text-transform: uppercase; }
+        .btn-gold { background: var(--gold); color: var(--navy); padding: 15px 30px; border: none; border-radius: 8px; font-weight: 800; width: 100%; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
         
         #results { display: none; margin-top: 30px; padding: 25px; background: white; border-radius: 10px; border-top: 5px solid var(--success); }
         .res-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
         .savings-badge { background: #E8F5E9; color: var(--success); padding: 15px; border-radius: 8px; text-align: center; font-weight: 700; margin-top: 20px; border: 1px solid var(--success); }
 
+        /* Articles */
+        article h2 { color: var(--navy); border-left: 5px solid var(--gold); padding-left: 15px; margin: 3rem 0 1rem; }
+        article h3 { color: var(--navy); margin-top: 2rem; }
+        p { margin-bottom: 1.5rem; text-align: justify; }
+
+        /* Cookie Banner */
+        #cookie-banner { position: fixed; bottom: 20px; left: 20px; right: 20px; background: var(--black); color: var(--white); padding: 20px; border-radius: 8px; display: none; justify-content: space-between; align-items: center; z-index: 2000; border-left: 5px solid var(--gold); }
+
         /* Footer */
         footer { background: var(--navy); color: var(--white); padding: 60px 10%; border-top: 5px solid var(--gold); margin-top: 60px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
         .footer-col h4 { color: var(--gold); margin-bottom: 20px; }
-        ul { list-style: none; }
-        li { margin-bottom: 10px; cursor: pointer; opacity: 0.8; }
+        li { list-style: none; margin-bottom: 10px; cursor: pointer; opacity: 0.8; }
         li:hover { opacity: 1; color: var(--gold); }
     </style>
 </head>
 <body onhashchange="route()">
 
+    <div id="cookie-banner">
+        <p>We use cookies to improve your experience and serve relevant ads via Google. <a href="#privacy" style="color:var(--gold);">Policy</a></p>
+        <button onclick="acceptCookies()" style="background:var(--gold); border:none; padding:8px 15px; border-radius:4px; cursor:pointer; font-weight:700;">Accept All</button>
+    </div>
+
     <header>
         <a href="#home" class="logo">SS TRADERS</a>
         <nav>
-            <a href="#home">Tax Calculator</a>
-            <a href="#strategy">Investment Strategy</a>
-            <a href="mailto:sstraders.education@gmail.com" style="background:var(--black); padding: 8px 15px; border-radius: 5px; color:var(--gold);">Email Support</a>
+            <a href="#home">Calculator</a>
+            <a href="#strategy">Strategy</a>
+            <a href="mailto:sstraders.education@gmail.com" style="background:var(--black); padding: 8px 15px; border-radius: 5px; color:var(--gold);">Contact</a>
         </nav>
     </header>
 
-    <!-- HOME PAGE (Calculator & Strategy) -->
+    <!-- MAIN PAGE -->
     <div id="home" class="page-content active-page">
         <section class="hero">
-            <h1>2026 Australian Tax & Super Hub</h1>
-            <p>Calculate your take-home pay with Stage 3 Tax Cuts & 12% Superannuation.</p>
+            <h1>2026 Australian Tax & Strategy Hub</h1>
+            <p>Precise tools for the 2025-26 Financial Year. Deploy capital with confidence.</p>
         </section>
 
         <div class="container">
+            <!-- CALCULATOR -->
             <div class="calc-box">
                 <div class="input-group">
-                    <label style="font-weight:700;">Annual Salary (AUD):</label>
-                    <input type="number" id="salary" placeholder="Enter Annual Gross Salary">
+                    <label style="font-weight:700;">Gross Annual Salary (AUD):</label>
+                    <input type="number" id="salary" placeholder="e.g. 110000">
                 </div>
-                <button class="btn-gold" onclick="runTaxCalc()">Calculate 2026 Savings</button>
+                <button class="btn-gold" onclick="runTaxCalc()">Calculate 2026 Take-Home</button>
+                
                 <div id="results">
-                    <h3>Your 2025–26 Forecast</h3>
-                    <div class="res-row"><span>Super (12%):</span><strong id="rSuper">$0</strong></div>
-                    <div class="res-row"><span>Medicare Levy:</span><strong id="rMedicare" style="color:red;">-$0</strong></div>
-                    <div class="res-row"><span>Income Tax:</span><strong id="rTax" style="color:red;">-$0</strong></div>
+                    <div class="res-row"><span>Super Guarantee (12%):</span><strong id="rSuper">$0</strong></div>
+                    <div class="res-row"><span>Medicare Levy (2%):</span><strong id="rMedicare" style="color:red;">-$0</strong></div>
+                    <div class="res-row"><span>Income Tax (FY26):</span><strong id="rTax" style="color:red;">-$0</strong></div>
                     <hr style="margin:15px 0;">
                     <div class="res-row" style="font-size:1.2rem;"><span>Annual Take-Home:</span><strong id="rTotal" style="color:var(--success);">$0</strong></div>
-                    <div class="savings-badge">Stage 3 Bonus: You keep <span id="rSavings">$0</span> more compared to 2024!</div>
+                    <div class="savings-badge">🎉 Stage 3 Impact: You keep <span id="rSavings">$0</span> more compared to 2024!</div>
                 </div>
             </div>
 
+            <!-- ARTICLES -->
             <article id="strategy">
-                <h2>The $10,000 Strategy: Forex, Stocks, & Crypto 2026</h2>
-                <p>Deploying $10,000 USD in 2026 requires a "top-down" approach. With the AUD/USD corridor showing new volatility at the 0.6900 mark, savvy traders are looking toward commodity-backed currencies and AI-focused equities...</p>
-                <!-- [Include your 800-word article here] -->
+                <h2>Forex, Crypto & Market Strategy: Deploying $10,000 USD</h2>
+                <p>Navigating the global markets in 2026 requires a sophisticated understanding of central bank divergence and regional tax shifts. For those with a $10,000 USD portfolio today, the environment offers a unique balance of high-yield stability and speculative growth opportunities.</p>
+
+                <h3>1. Forex Analysis & AUD/USD Dynamics</h3>
+                <p>The Australian Dollar (AUD) enters the mid-2026 cycle supported by robust commodity pricing, particularly in critical minerals. For Forex traders, the 0.6850 to 0.7100 corridor represents a significant zone of interest. With the U.S. Federal Reserve moving toward a neutral rate environment, the yield differential between the RBA and the Fed has narrowed. We suggest a tactical approach: monitor the 10-year bond yield spreads to time entries into the AUD. A $10,000 USD allocation can be strategically hedged against local currency volatility to protect domestic purchasing power.</p>
+
+                <h3>2. Stock Market: The 2026 Sector Rotation</h3>
+                <p>Equity markets in 2026 have shifted focus from "growth at any cost" to "quality at a reasonable price." AI-infrastructure providers, specialized healthcare, and Australian resource leaders are the cornerstone of our $10k blueprint. We recommend an 80/20 split: 80% into broad-market ETFs (such as the ASX 200 and S&P 500) to capture long-term structural growth, and 20% into "High-Conviction" satellites. Focus on companies with sustainable franked dividends, which remain a primary vehicle for tax-efficient wealth accumulation in the Australian context.</p>
+
+                <h3>3. Cryptocurrency Tax: 2025-26 ATO Compliance</h3>
+                <p>Cryptocurrency is no longer a tax-free frontier. The Australian Taxation Office (ATO) now utilizes advanced data-matching algorithms to track transactions from exchanges to personal wallets. If you are deploying a portion of your $10,000 into digital assets, you must understand the Capital Gains Tax (CGT) implications. Every "crypto-to-crypto" swap is a taxable event. However, by utilizing the 12-month holding rule, investors can reduce their CGT liability by 50%. Our 2026 strategy emphasizes "Buy and Hold" to maximize these legislated tax benefits.</p>
+
+                <h3>4. Final Investment Blueprint ($10,000 USD Allocation)</h3>
+                <p>To ensure portfolio longevity, we propose the following 2026 Allocation Model:
+                <ul>
+                    <li><strong>$5,000 (Safety):</strong> Vanguard Diversified High Growth Index ETF (VDHG)</li>
+                    <li><strong>$3,000 (Income):</strong> High-Yield Savings or Term Deposits (Currently 4.25%+)</li>
+                    <li><strong>$1,500 (Growth):</strong> NASDAQ 100 (NDQ) to capture AI and Tech innovation</li>
+                    <li><strong>$500 (Speculative):</strong> Bitcoin or Emerging DeFi Protocols</li>
+                </ul>
+                This model provides an estimated 2026 projected return of 7-9% while keeping 40% of the portfolio in highly liquid, low-risk assets.</p>
             </article>
         </div>
     </div>
 
-    <!-- PRIVACY PAGE -->
-    <div id="privacy-page" class="page-content container">
+    <!-- LEGAL PAGES -->
+    <div id="privacy" class="page-content container">
         <article>
             <h2>Privacy Policy</h2>
-            <p>At SS Traders, we prioritize your data security. We do not store personal financial data entered into our calculators.</p>
-            <p><strong>Google AdSense:</strong> We use third-party vendors, including Google, which use cookies to serve ads based on your prior visits to this website. You may opt out of personalized advertising by visiting Google Ads Settings.</p>
+            <p>SS Traders respects your financial privacy. Our calculators are client-side only; we do not store your salary or tax data on our servers.</p>
+            <p><strong>Third-Party Ads:</strong> We use Google AdSense. Google uses cookies to serve ads based on your visits to this and other sites. You may opt out of personalized advertising in your Google account settings.</p>
         </article>
     </div>
 
-    <!-- TERMS PAGE -->
-    <div id="terms-page" class="page-content container">
+    <div id="terms" class="page-content container">
         <article>
             <h2>Terms & Conditions</h2>
-            <p>By using this website, you agree that the financial calculators provided are for general educational purposes only.</p>
-            <p><strong>Accuracy:</strong> While we aim for 2025-26 legislative accuracy, results are estimates and should be verified with an ATO-registered tax agent. SS Traders is not liable for any financial decisions made based on this tool.</p>
+            <p>The tools and articles on this site are for educational purposes only. They do not constitute professional financial advice.</p>
+            <p><strong>Estimates:</strong> Tax calculations are based on 2025-26 Australian legislated rates (Stage 3). Always consult a registered tax agent (BAS/Tax Agent) before submitting documents to the ATO.</p>
         </article>
     </div>
 
     <footer>
         <div class="footer-grid">
-            <div class="footer-col"><h4>SS Traders</h4><p>Professional AU Financial Utilities.</p></div>
+            <div class="footer-col"><h4>SS Traders</h4><p>Data-driven financial education for Australians.</p></div>
             <div class="footer-col">
                 <h4>Legal</h4>
                 <ul>
-                    <li><a href="#privacy-page" style="color:inherit; text-decoration:none;">Privacy Policy</a></li>
-                    <li><a href="#terms-page" style="color:inherit; text-decoration:none;">Terms & Conditions</a></li>
+                    <li><a href="#privacy" style="color:inherit; text-decoration:none;">Privacy Policy</a></li>
+                    <li><a href="#terms" style="color:inherit; text-decoration:none;">Terms of Service</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Resources</h4>
+                <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="#home" style="color:inherit; text-decoration:none;">Tax Calculator</a></li>
-                    <li><a href="#strategy" style="color:inherit; text-decoration:none;">Investment Strategy</a></li>
+                    <li><a href="#home" style="color:inherit; text-decoration:none;">Tax Tool</a></li>
+                    <li><a href="#strategy" style="color:inherit; text-decoration:none;">2026 Guide</a></li>
                 </ul>
             </div>
         </div>
@@ -128,53 +158,49 @@
     </footer>
 
     <script>
-        // ROUTING LOGIC: Fixes the "not opening" issue
         function route() {
             const hash = window.location.hash || '#home';
-            const pages = document.querySelectorAll('.page-content');
-            pages.forEach(p => p.classList.remove('active-page'));
-
-            if (hash === '#privacy-page') {
-                document.getElementById('privacy-page').classList.add('active-page');
-            } else if (hash === '#terms-page') {
-                document.getElementById('terms-page').classList.add('active-page');
-            } else if (hash === '#strategy') {
+            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active-page'));
+            
+            if (hash === '#privacy') document.getElementById('privacy').classList.add('active-page');
+            else if (hash === '#terms') document.getElementById('terms').classList.add('active-page');
+            else {
                 document.getElementById('home').classList.add('active-page');
-                document.getElementById('strategy').scrollIntoView({behavior: 'smooth'});
-            } else {
-                document.getElementById('home').classList.add('active-page');
-                window.scrollTo(0,0);
+                if (hash === '#strategy') document.getElementById('strategy').scrollIntoView({behavior: 'smooth'});
+                else window.scrollTo(0,0);
             }
         }
 
-        // TAX CALCULATION LOGIC
         function runTaxCalc() {
-            const income = parseFloat(document.getElementById('salary').value);
-            if (!income) return;
-            const superVal = income * 0.12;
-            const medicare = income > 27222 ? income * 0.02 : 0;
-            let tax26 = 0;
-            if (income > 190000) tax26 = 51638 + (income - 190000) * 0.45;
-            else if (income > 135000) tax26 = 31288 + (income - 135000) * 0.37;
-            else if (income > 45000) tax26 = 4288 + (income - 45000) * 0.30;
-            else if (income > 18200) tax26 = (income - 18200) * 0.16;
+            const inc = parseFloat(document.getElementById('salary').value);
+            if (!inc) return;
 
+            // 2026 Rules (Stage 3 + 12% Super)
+            const superVal = inc * 0.12;
+            const medicare = inc > 27222 ? inc * 0.02 : 0;
+            let tax26 = 0;
+            if (inc > 190000) tax26 = 51638 + (inc - 190000) * 0.45;
+            else if (inc > 135000) tax26 = 31288 + (inc - 135000) * 0.37;
+            else if (inc > 45000) tax26 = 4288 + (inc - 45000) * 0.30;
+            else if (inc > 18200) tax26 = (inc - 18200) * 0.16;
+
+            // 2024 Comparison
             let tax24 = 0;
-            if (income > 180000) tax24 = 51667 + (income - 180000) * 0.45;
-            else if (income > 120000) tax24 = 29467 + (income - 120000) * 0.37;
-            else if (income > 45000) tax24 = 5092 + (income - 45000) * 0.325;
-            else if (income > 18200) tax24 = (income - 18200) * 0.19;
+            if (inc > 180000) tax24 = 51667 + (inc - 180000) * 0.45;
+            else if (inc > 120000) tax24 = 29467 + (inc - 120000) * 0.37;
+            else if (inc > 45000) tax24 = 5092 + (inc - 45000) * 0.325;
+            else if (inc > 18200) tax24 = (inc - 18200) * 0.19;
 
             document.getElementById('results').style.display = 'block';
             document.getElementById('rSuper').innerText = '$' + Math.round(superVal).toLocaleString();
             document.getElementById('rMedicare').innerText = '-$' + Math.round(medicare).toLocaleString();
             document.getElementById('rTax').innerText = '-$' + Math.round(tax26).toLocaleString();
-            document.getElementById('rTotal').innerText = '$' + Math.round(income - tax26 - medicare).toLocaleString();
+            document.getElementById('rTotal').innerText = '$' + Math.round(inc - tax26 - medicare).toLocaleString();
             document.getElementById('rSavings').innerText = '$' + Math.round(tax24 - tax26).toLocaleString();
         }
 
-        // Run routing on first load
-        window.onload = route;
+        function acceptCookies() { localStorage.setItem('cc', '1'); document.getElementById('cookie-banner').style.display = 'none'; }
+        window.onload = () => { if(!localStorage.getItem('cc')) document.getElementById('cookie-banner').style.display = 'flex'; route(); };
     </script>
 </body>
 </html>
