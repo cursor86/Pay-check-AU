@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SS Traders | 2026 Australian Tax & Investment Hub</title>
+    <title>SS Traders | 2026 AU Tax & Investment Hub</title>
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
         :root { --navy: #001F3F; --gold: #D4AF37; --black: #1A1A1A; --white: #FFFFFF; --gray: #F4F7F9; --success: #2E7D32; }
@@ -12,24 +12,25 @@
 
         /* Navigation */
         header { background: var(--navy); padding: 1rem 5%; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--gold); }
-        .logo { color: var(--gold); font-weight: 800; text-decoration: none; font-size: 1.5rem; letter-spacing: 1px; }
+        .logo { color: var(--gold); font-weight: 800; text-decoration: none; font-size: 1.5rem; cursor: pointer; }
         nav a { color: var(--white); text-decoration: none; margin-left: 20px; font-weight: 500; cursor: pointer; }
         nav a:hover { color: var(--gold); }
 
-        /* Hero & Article */
-        .hero { background: var(--navy); color: var(--white); padding: 80px 10%; text-align: center; border-bottom-right-radius: 80px; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
-        article h2 { color: var(--navy); border-left: 5px solid var(--gold); padding-left: 15px; margin: 2.5rem 0 1rem; }
-        p { margin-bottom: 1.5rem; text-align: justify; }
+        /* Page Content Logic */
+        .page-content { display: none; padding-bottom: 80px; min-height: 80vh; }
+        .active-page { display: block; }
 
-        /* Calculator Styles */
-        .calc-box { background: var(--gray); padding: 40px; border-radius: 15px; border: 2px solid var(--gold); margin-top: -60px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        /* Sections */
+        .hero { background: var(--navy); color: var(--white); padding: 80px 10%; text-align: center; border-bottom-right-radius: 80px; margin-bottom: 40px; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        article h2 { color: var(--navy); border-left: 5px solid var(--gold); padding-left: 15px; margin: 2.5rem 0 1rem; }
+        
+        /* Calculator */
+        .calc-box { background: var(--gray); padding: 40px; border-radius: 15px; border: 2px solid var(--gold); box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 50px; }
         .input-group { margin-bottom: 20px; }
         input { width: 100%; padding: 15px; border: 1px solid #ccc; border-radius: 8px; font-size: 1.1rem; }
-        .btn-gold { background: var(--gold); color: var(--navy); padding: 15px 30px; border: none; border-radius: 8px; font-weight: 800; width: 100%; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
-        .btn-gold:hover { transform: scale(1.02); }
-
-        /* Comparison Results */
+        .btn-gold { background: var(--gold); color: var(--navy); padding: 15px 30px; border: none; border-radius: 8px; font-weight: 800; width: 100%; cursor: pointer; text-transform: uppercase; }
+        
         #results { display: none; margin-top: 30px; padding: 25px; background: white; border-radius: 10px; border-top: 5px solid var(--success); }
         .res-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
         .savings-badge { background: #E8F5E9; color: var(--success); padding: 15px; border-radius: 8px; text-align: center; font-weight: 700; margin-top: 20px; border: 1px solid var(--success); }
@@ -43,18 +44,19 @@
         li:hover { opacity: 1; color: var(--gold); }
     </style>
 </head>
-<body>
+<body onhashchange="route()">
 
     <header>
-        <a href="#" class="logo">SS TRADERS</a>
+        <a href="#home" class="logo">SS TRADERS</a>
         <nav>
-            <a onclick="showPage('home')">Tax Calculator</a>
-            <a onclick="showPage('strategy')">2026 Strategy</a>
+            <a href="#home">Tax Calculator</a>
+            <a href="#strategy">Investment Strategy</a>
             <a href="mailto:sstraders.education@gmail.com" style="background:var(--black); padding: 8px 15px; border-radius: 5px; color:var(--gold);">Email Support</a>
         </nav>
     </header>
 
-    <div id="home" class="page-content">
+    <!-- HOME PAGE (Calculator & Strategy) -->
+    <div id="home" class="page-content active-page">
         <section class="hero">
             <h1>2026 Australian Tax & Super Hub</h1>
             <p>Calculate your take-home pay with Stage 3 Tax Cuts & 12% Superannuation.</p>
@@ -64,117 +66,115 @@
             <div class="calc-box">
                 <div class="input-group">
                     <label style="font-weight:700;">Annual Salary (AUD):</label>
-                    <input type="number" id="salary" placeholder="Enter Annual Gross Salary (e.g. 100000)">
+                    <input type="number" id="salary" placeholder="Enter Annual Gross Salary">
                 </div>
                 <button class="btn-gold" onclick="runTaxCalc()">Calculate 2026 Savings</button>
-
                 <div id="results">
                     <h3>Your 2025–26 Forecast</h3>
-                    <div class="res-row"><span>Super Guarantee (12%):</span><strong id="rSuper">$0</strong></div>
-                    <div class="res-row"><span>Medicare Levy (2%):</span><strong id="rMedicare" style="color:red;">-$0</strong></div>
-                    <div class="res-row"><span>Income Tax (FY26):</span><strong id="rTax" style="color:red;">-$0</strong></div>
+                    <div class="res-row"><span>Super (12%):</span><strong id="rSuper">$0</strong></div>
+                    <div class="res-row"><span>Medicare Levy:</span><strong id="rMedicare" style="color:red;">-$0</strong></div>
+                    <div class="res-row"><span>Income Tax:</span><strong id="rTax" style="color:red;">-$0</strong></div>
                     <hr style="margin:15px 0;">
                     <div class="res-row" style="font-size:1.2rem;"><span>Annual Take-Home:</span><strong id="rTotal" style="color:var(--success);">$0</strong></div>
-                    
-                    <div class="savings-badge">
-                        🎉 Stage 3 Bonus: You keep <span id="rSavings">$0</span> more per year compared to 2024!
-                    </div>
+                    <div class="savings-badge">Stage 3 Bonus: You keep <span id="rSavings">$0</span> more compared to 2024!</div>
                 </div>
             </div>
+
+            <article id="strategy">
+                <h2>The $10,000 Strategy: Forex, Stocks, & Crypto 2026</h2>
+                <p>Deploying $10,000 USD in 2026 requires a "top-down" approach. With the AUD/USD corridor showing new volatility at the 0.6900 mark, savvy traders are looking toward commodity-backed currencies and AI-focused equities...</p>
+                <!-- [Include your 800-word article here] -->
+            </article>
         </div>
     </div>
 
-    <div id="strategy" class="container">
-        <article id="strategy-guide">
-            <h2>The $10,000 Blueprint: Forex, Stocks, and Crypto 2026</h2>
-            <p>As we navigate May 2026, the Australian economic landscape is defined by "Central Bank Normalization." With inflation cooling and interest rates stabilizing, investors holding $10,000 USD face a unique window of opportunity. The following 800-word analysis breaks down the most effective deployment of capital for the remainder of the 2025-26 financial year.</p>
+    <!-- PRIVACY PAGE -->
+    <div id="privacy-page" class="page-content container">
+        <article>
+            <h2>Privacy Policy</h2>
+            <p>At SS Traders, we prioritize your data security. We do not store personal financial data entered into our calculators.</p>
+            <p><strong>Google AdSense:</strong> We use third-party vendors, including Google, which use cookies to serve ads based on your prior visits to this website. You may opt out of personalized advertising by visiting Google Ads Settings.</p>
+        </article>
+    </div>
 
-            <h3>1. Forex Analysis & The AUD/USD Corridor</h3>
-            <p>In 2026, the Australian Dollar (AUD) has shown resilience against a softening Greenback. Trading the AUD/USD pair today requires a deep understanding of commodity price cycles—specifically iron ore and copper, which remain Australia's primary exports. For a $10,000 portfolio, Forex provides the liquidity necessary for tactical hedging. We suggest monitoring the 0.6800 support level; a sustained break above 0.7000 could signal a long-term structural shift as the Reserve Bank of Australia (RBA) maintains a slightly more hawkish tone compared to its global peers.</p>
-
-            <h3>2. Stock Market: High-Conviction Investing</h3>
-            <p>Diversification remains the cornerstone of wealth retention. For a $10k allocation, we favor a "Core-Satellite" approach. Allocating 60% into an S&P/ASX 200 Index Fund ensures exposure to the banking and mining giants that underpin the local economy. The remaining 40% should target high-growth technology and "green energy" sectors. Companies specializing in AI infrastructure and battery storage are the clear winners of the 2026 fiscal cycle. Look for firms with strong free cash flow and low debt-to-equity ratios to weather any potential volatility.</p>
-
-            <h3>3. Cryptocurrency & Tax Compliance (The ATO Shift)</h3>
-            <p>The Australian Taxation Office (ATO) has implemented sophisticated data-matching for the 2025-26 year. Every digital asset transaction is now transparent. If you are investing a portion of your $10,000 into Bitcoin or Ethereum, you must account for Capital Gains Tax (CGT). However, the "12-month rule" is your best friend: holding an asset for over a year provides a 50% discount on your CGT liability. Our advice: use dedicated tax software to track every swap to avoid penalties during an audit.</p>
-
-            <h3>4. Strategic $10,000 Allocation Model</h3>
-            <p>For most professionals, we recommend the <strong>"80% Fortress"</strong> model:
-            <ul>
-                <li><strong>$5,000:</strong> Diversified Index ETFs (Global & Domestic)</li>
-                <li><strong>$2,500:</strong> High-Yield Fixed Income or Bonds (Current yields 4.5%+)</li>
-                <li><strong>$1,500:</strong> Speculative Growth (Small-cap Tech or Crypto)</li>
-                <li><strong>$1,000:</strong> Cash Reserve (HYSA for emergency liquidity)</li>
-            </ul>
-            This balanced approach protects your downside while ensuring you participate in the upside of the 2026 digital expansion.</p>
+    <!-- TERMS PAGE -->
+    <div id="terms-page" class="page-content container">
+        <article>
+            <h2>Terms & Conditions</h2>
+            <p>By using this website, you agree that the financial calculators provided are for general educational purposes only.</p>
+            <p><strong>Accuracy:</strong> While we aim for 2025-26 legislative accuracy, results are estimates and should be verified with an ATO-registered tax agent. SS Traders is not liable for any financial decisions made based on this tool.</p>
         </article>
     </div>
 
     <footer>
         <div class="footer-grid">
-            <div class="footer-col">
-                <h4>SS Traders</h4>
-                <p style="font-size:0.85rem; color:#ccc;">Professional Australian financial utilities. Data-driven, E-E-A-T compliant guidance for the modern investor.</p>
-            </div>
+            <div class="footer-col"><h4>SS Traders</h4><p>Professional AU Financial Utilities.</p></div>
             <div class="footer-col">
                 <h4>Legal</h4>
                 <ul>
-                    <li>Privacy Policy</li>
-                    <li>Disclaimer</li>
-                    <li>Terms of Use</li>
+                    <li><a href="#privacy-page" style="color:inherit; text-decoration:none;">Privacy Policy</a></li>
+                    <li><a href="#terms-page" style="color:inherit; text-decoration:none;">Terms & Conditions</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Resources</h4>
                 <ul>
-                    <li onclick="showPage('home')">Tax Calculator</li>
-                    <li onclick="showPage('strategy')">Investment Guide</li>
-                    <li>Crypto Tax Support</li>
+                    <li><a href="#home" style="color:inherit; text-decoration:none;">Tax Calculator</a></li>
+                    <li><a href="#strategy" style="color:inherit; text-decoration:none;">Investment Strategy</a></li>
                 </ul>
             </div>
         </div>
-        <p style="text-align:center; margin-top:40px; font-size:0.75rem; opacity:0.5;">Disclaimer: Results are estimates only. Not professional financial advice. © 2026 SS Traders.</p>
+        <p style="text-align:center; margin-top:40px; font-size:0.75rem; opacity:0.5;">© 2026 SS Traders. General Advice Only.</p>
     </footer>
 
     <script>
+        // ROUTING LOGIC: Fixes the "not opening" issue
+        function route() {
+            const hash = window.location.hash || '#home';
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(p => p.classList.remove('active-page'));
+
+            if (hash === '#privacy-page') {
+                document.getElementById('privacy-page').classList.add('active-page');
+            } else if (hash === '#terms-page') {
+                document.getElementById('terms-page').classList.add('active-page');
+            } else if (hash === '#strategy') {
+                document.getElementById('home').classList.add('active-page');
+                document.getElementById('strategy').scrollIntoView({behavior: 'smooth'});
+            } else {
+                document.getElementById('home').classList.add('active-page');
+                window.scrollTo(0,0);
+            }
+        }
+
+        // TAX CALCULATION LOGIC
         function runTaxCalc() {
             const income = parseFloat(document.getElementById('salary').value);
-            if (!income || income <= 0) return alert("Please enter a valid salary.");
-
-            // 1. Super Guarantee 2026 (12%)
+            if (!income) return;
             const superVal = income * 0.12;
-
-            // 2. Medicare Levy (2%)
             const medicare = income > 27222 ? income * 0.02 : 0;
-
-            // 3. FY26 Income Tax (Stage 3 Rates)
             let tax26 = 0;
             if (income > 190000) tax26 = 51638 + (income - 190000) * 0.45;
             else if (income > 135000) tax26 = 31288 + (income - 135000) * 0.37;
             else if (income > 45000) tax26 = 4288 + (income - 45000) * 0.30;
             else if (income > 18200) tax26 = (income - 18200) * 0.16;
 
-            // 4. Old FY24 Tax (For Comparison)
             let tax24 = 0;
             if (income > 180000) tax24 = 51667 + (income - 180000) * 0.45;
             else if (income > 120000) tax24 = 29467 + (income - 120000) * 0.37;
             else if (income > 45000) tax24 = 5092 + (income - 45000) * 0.325;
             else if (income > 18200) tax24 = (income - 18200) * 0.19;
 
-            const savings = tax24 - tax26;
-
-            // Update UI
             document.getElementById('results').style.display = 'block';
             document.getElementById('rSuper').innerText = '$' + Math.round(superVal).toLocaleString();
             document.getElementById('rMedicare').innerText = '-$' + Math.round(medicare).toLocaleString();
             document.getElementById('rTax').innerText = '-$' + Math.round(tax26).toLocaleString();
             document.getElementById('rTotal').innerText = '$' + Math.round(income - tax26 - medicare).toLocaleString();
-            document.getElementById('rSavings').innerText = '$' + Math.round(savings).toLocaleString();
+            document.getElementById('rSavings').innerText = '$' + Math.round(tax24 - tax26).toLocaleString();
         }
 
-        function showPage(id) {
-            document.getElementById(id).scrollIntoView({behavior: 'smooth'});
-        }
+        // Run routing on first load
+        window.onload = route;
     </script>
 </body>
 </html>
