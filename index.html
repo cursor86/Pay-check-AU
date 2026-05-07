@@ -3,148 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SS Traders | High-Precision Australian Tax Tools</title>
+    <title>SS Traders | 2026 Financial Strategy & Tax Tools</title>
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
-        :root { --deep-navy: #001F3F; --gold: #D4AF37; --vibrant-black: #1A1A1A; --white: #FFFFFF; }
+        :root { --deep-navy: #001F3F; --gold: #D4AF37; --vibrant-black: #1A1A1A; --white: #FFFFFF; --gray: #F4F7F9; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; color: var(--vibrant-black); background: var(--white); }
+        body { font-family: 'Inter', sans-serif; color: var(--vibrant-black); background: var(--white); line-height: 1.8; }
 
-        /* Navigation */
-        header { background: var(--deep-navy); padding: 1rem 5%; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--gold); }
-        .logo { color: var(--gold); font-weight: 700; text-decoration: none; font-size: 1.4rem; }
-        nav a { color: var(--white); text-decoration: none; margin-left: 20px; cursor: pointer; transition: 0.3s; }
+        header { background: var(--deep-navy); padding: 1rem 5%; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--gold); }
+        .logo { color: var(--gold); font-weight: 700; text-decoration: none; font-size: 1.5rem; }
+        nav a { color: var(--white); text-decoration: none; margin-left: 20px; font-weight: 500; cursor: pointer; }
         nav a:hover { color: var(--gold); }
 
-        /* Page Management */
-        .page-content { display: none; padding: 60px 10%; min-height: 70vh; }
-        .active { display: block; }
-        article { max-width: 900px; margin: 0 auto; line-height: 1.8; }
+        .hero { background: var(--deep-navy); color: var(--white); padding: 80px 10%; text-align: center; border-bottom-right-radius: 60px; }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .btn-gold { background: var(--gold); color: var(--deep-navy); padding: 15px 30px; border: none; border-radius: 5px; font-weight: 700; cursor: pointer; text-transform: uppercase; margin-top: 20px; }
 
-        /* Hero & CTA */
-        .hero { background: var(--deep-navy); color: var(--white); padding: 100px 10%; text-align: center; }
-        .btn-gold { background: var(--gold); color: var(--deep-navy); padding: 15px 30px; border: none; border-radius: 5px; font-weight: 700; cursor: pointer; margin-top: 20px; }
+        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+        article h2 { color: var(--prof-navy); margin: 2rem 0 1rem; border-left: 5px solid var(--gold); padding-left: 15px; }
+        article h3 { color: var(--deep-navy); margin: 1.5rem 0 0.5rem; }
+        p { margin-bottom: 1.5rem; text-align: justify; }
 
-        /* Cookie Banner */
-        #cookie-banner { position: fixed; bottom: 0; width: 100%; background: var(--vibrant-black); color: var(--white); padding: 20px; display: none; justify-content: space-between; align-items: center; z-index: 2000; border-top: 3px solid var(--gold); }
-        .cookie-btns { display: flex; gap: 10px; }
-        .btn-accept { background: var(--gold); color: var(--vibrant-black); border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; }
-
-        /* Footer */
-        footer { background: var(--deep-navy); color: var(--white); padding: 40px 10%; border-top: 5px solid var(--gold); }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
-        .footer-col h4 { color: var(--gold); margin-bottom: 15px; }
+        #cookie-banner { position: fixed; bottom: 20px; left: 20px; right: 20px; background: var(--vibrant-black); color: var(--white); padding: 20px; border-radius: 8px; display: none; justify-content: space-between; align-items: center; z-index: 2000; border-left: 5px solid var(--gold); }
+        footer { background: var(--deep-navy); color: var(--white); padding: 50px 10%; margin-top: 60px; border-top: 4px solid var(--gold); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .footer-col h4 { color: var(--gold); margin-bottom: 20px; }
         .footer-col ul { list-style: none; }
-        .footer-col li { cursor: pointer; margin-bottom: 8px; font-size: 0.9rem; opacity: 0.8; }
-        .footer-col li:hover { opacity: 1; color: var(--gold); }
+        .footer-col li { margin-bottom: 10px; cursor: pointer; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
-    <!-- Cookie Banner -->
     <div id="cookie-banner">
-        <p>We use cookies to improve your experience and serve relevant ads via Google AdSense. <a onclick="showPage('privacy')" style="color:var(--gold); cursor:pointer;">Learn more</a>.</p>
-        <div class="cookie-btns">
-            <button class="btn-accept" onclick="acceptCookies()">Accept All</button>
-        </div>
+        <p>We use cookies to improve your experience and serve relevant ads. <a onclick="showPage('privacy')" style="color:var(--gold); cursor:pointer;">Privacy Policy</a>.</p>
+        <button onclick="acceptCookies()" style="background:var(--gold); border:none; padding:10px 20px; border-radius:4px; cursor:pointer; font-weight:600;">Accept All</button>
     </div>
 
     <header>
-        <a onclick="showPage('home')" class="logo">SS TRADERS</a>
+        <a onclick="location.reload()" class="logo">SS TRADERS</a>
         <nav>
-            <a onclick="showPage('home')">Home</a>
-            <a onclick="showPage('about')">About Us</a>
-            <a href="mailto:sstraders.education@gmail.com" style="background:var(--vibrant-black); padding: 8px 15px; border-radius: 5px; color:var(--gold);">Email Us</a>
+            <a onclick="showPage('strategy')">2026 Strategy</a>
+            <a href="mailto:sstraders.education@gmail.com" style="background:var(--vibrant-black); padding: 8px 15px; border-radius: 5px; color:var(--gold);">Contact Us</a>
         </nav>
     </header>
 
-    <!-- Home Page -->
     <div id="home" class="page-content active">
         <div class="hero">
-            <h1>Australian Tax Calculators: The Best Tools for Freelancers</h1>
-            <p>High-precision GST & PAYG utilities for the 2025-26 Australian Financial Year.</p>
-            <button class="btn-gold" onclick="alert('Calculator Loading...')">Launch Calculator</button>
+            <h1>Deploying $10,000 USD in 2026: The Strategic Blueprint</h1>
+            <p>From Forex volatility to Crypto Tax compliance, master the shifts of the new financial year.</p>
+            <button class="btn-gold" onclick="window.speechSynthesis.speak(new SpeechSynthesisUtterance(document.getElementById('main-article').innerText))">🔊 Read Guide For Me</button>
         </div>
-        <article style="margin-top:40px;">
-            <h2>Navigating 2025-26 Compliance</h2>
-            <p>Every freelancer and investor in Australia faces a shifting landscape this year. With the final Superannuation Guarantee increase and Stage 3 tax cuts, accurate tracking is non-negotiable...</p>
-            <!-- [Include 500-word article here] -->
-        </article>
+
+        <div class="container" id="strategy">
+            <article id="main-article">
+                <h2>The 2026 Global Market Outlook: Forex & Macro Trends</h2>
+                <p>As we navigate May 2026, the global currency landscape is defined by "central bank divergence." The U.S. Federal Reserve has moved toward a neutral stance with rates hovering around 3.00% – 3.25%. For a $10,000 USD portfolio, this shifting yield differential makes the USD/JPY and EUR/USD pairs critical. While the USD has faced headwinds throughout 2025, reaching the mid-90s range, current analysis suggests a steadier tone supported by resilient economic data. However, elevated energy prices and geopolitical risks persist, making a "top-down" analysis non-negotiable for anyone trading the Aussie dollar or Euro.</p>
+
+                <h2>Australian Cryptocurrency Tax: 2026 Compliance</h2>
+                <p>For Australian residents, the ATO has dramatically expanded its monitoring capabilities. The core rule remains: crypto is property, not currency, meaning most disposals trigger Capital Gains Tax (CGT). If you have held assets for more than 12 months, you are entitled to a 50% CGT discount. However, the "Trader" vs. "Investor" distinction is vital—if you trade frequently for recurring profit, you may be taxed at higher income rates rather than CGT. Ensure you track every "swap" (e.g., BTC to ETH), as these are taxable events in the eyes of the ATO.</p>
+
+                <h2>Stock Market Strategies & High-Growth Sectors</h2>
+                <p>With $10,000 USD today, the goal should be a blend of "Old Economy" resilience and "Digital Growth." High-growth opportunities for 2026 lie in the broadening AI ecosystem and deregulation within financials. Locally, the ASX shows promise in structural growth leaders like HUB24 or energy infrastructure plays like APA Group. Diversification is key; rather than chasing volatility, professional fund managers suggest a mix of global tech growth and precious metals like silver or gold to act as a portfolio ballast.</p>
+
+                <h2>Allocating Your $10,000 USD: A Balanced Blueprint</h2>
+                <p>If you have $10,000 USD today, consider the following diversified allocation for 2026:
+                <ul>
+                    <li><strong>$4,000 (Core):</strong> S&P 500 ETF (IVV/VOO) for exposure to the top 500 global companies.</li>
+                    <li><strong>$3,000 (Growth):</strong> Tech-focused ETF (QQQM/VGT) to capture the continued AI lift.</li>
+                    <li><strong>$2,000 (Income):</strong> High-dividend ETFs (SCHD) yielding approximately 3.8% annually.</li>
+                    <li><strong>$1,000 (Safety):</strong> High-Yield Savings Account (HYSA) or Money Market Fund, currently yielding 4.0% – 4.5%.</li>
+                </ul>
+                This "80% Fortress" approach ensures your core capital is protected while participating in market upside. Avoid "panic selling" during volatility; the current 2026 market rewards those who prioritize quality over cyclical speculation.</p>
+            </article>
+        </div>
     </div>
 
-    <!-- About Us -->
-    <div id="about" class="page-content">
-        <article>
-            <h2>About SS Traders</h2>
-            <p>Based in Sydney, we provide data-driven tools for the modern Australian professional. Our focus is Experience, Expertise, and Trust (E-E-A-T) in the financial sector.</p>
-        </article>
-    </div>
-
-    <!-- Privacy Policy -->
-    <div id="privacy" class="page-content">
-        <article>
-            <h2>Privacy Policy</h2>
-            <p>We use third-party vendors, including Google, to serve ads based on a user's prior visits. You can opt out of personalized advertising by visiting Google Ads Settings.</p>
-        </article>
-    </div>
-
-    <!-- Disclaimer -->
-    <div id="disclaimer" class="page-content">
-        <article>
-            <h2>General Advice Disclaimer</h2>
-            <p>Results from our calculators are estimates only. This site does not provide professional financial advice. Consult an ATO-registered tax agent before filing.</p>
-        </article>
+    <!-- Minimal Legal Pages for AdSense Compliance -->
+    <div id="privacy" class="page-content" style="display:none; padding: 60px 10%;">
+        <article><h2>Privacy Policy</h2><p>We use cookies and third-party vendors like Google to serve ads. Check your Google Ads Settings to manage data.</p></article>
     </div>
 
     <footer>
         <div class="footer-grid">
-            <div class="footer-col"><h4>Contact</h4><ul><li>sstraders.education@gmail.com</li></ul></div>
-            <div class="footer-col"><h4>Legal</h4><ul><li onclick="showPage('privacy')">Privacy Policy</li><li onclick="showPage('disclaimer')">Disclaimer</li></ul></div>
-            <div class="footer-col"><h4>About</h4><ul><li onclick="showPage('about')">About Us</li></ul></div>
+            <div class="footer-col"><h4>Contact</h4><ul><li>sstraders.education@gmail.com</li><li>Sydney, NSW</li></ul></div>
+            <div class="footer-col"><h4>Legal</h4><ul><li onclick="showPage('privacy')">Privacy Policy</li><li onclick="showPage('home')">Disclaimer</li></ul></div>
+            <div class="footer-col"><h4>Strategy</h4><ul><li onclick="showPage('strategy')">2026 Outlook</li><li>Crypto Tax Guide</li></ul></div>
         </div>
+        <p style="text-align:center; font-size:0.8rem; margin-top:40px; opacity:0.6;">Disclaimer: General advice only. All investments carry risk. Consult a registered professional.</p>
     </footer>
 
     <script>
         function showPage(id) {
-            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-            window.scrollTo(0,0);
+            document.querySelectorAll('.page-content').forEach(p => p.style.display = 'none');
+            const target = (id === 'strategy') ? 'home' : id;
+            document.getElementById(target).style.display = 'block';
+            if(id === 'strategy') document.getElementById('strategy').scrollIntoView({behavior: 'smooth'});
         }
-        function acceptCookies() {
-            localStorage.setItem('cookiesAccepted', 'true');
-            document.getElementById('cookie-banner').style.display = 'none';
-        }
-        window.onload = () => {
-            if(!localStorage.getItem('cookiesAccepted')) {
-                document.getElementById('cookie-banner').style.display = 'flex';
-            }
-        };
+        function acceptCookies() { localStorage.setItem('acc', '1'); document.getElementById('cookie-banner').style.display = 'none'; }
+        window.onload = () => { if(!localStorage.getItem('acc')) document.getElementById('cookie-banner').style.display = 'flex'; };
     </script>
 </body>
 </html>
-
-            <h2>Financial Education Hub</h2>
-            <p>Our commitment to global market literacy includes professional resources for <strong>Market Fundamentals</strong>, <strong>Capital Protection</strong>, and <strong>Central Bank Policies</strong>.</p>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <h3>SSTraders<span>Tax</span></h3>
-                <p>© 2026 SS Traders Education</p>
-                <p>Support: sstraders.education@gmail.com</p>
-            </div>
-            <div class="footer-links">
-                <!-- Internal Relative Links -->
-                <a href="about.html">About Us</a>
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="terms.html">Terms & Conditions</a>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
-
