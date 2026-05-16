@@ -4,7 +4,7 @@
 
 ---
 
-If you've ever looked at your payslip and wondered where half your money went, you're not alone. Australia's income tax system is progressive — meaning the more you earn, the higher the rate you pay on each additional dollar. But most Australians don't fully understand how the brackets actually work, which leads to a lot of confusion (and frustration) at tax time.
+If you have ever looked at your payslip and wondered where half your money went, you're not alone. Australia's income tax system is progressive — meaning the more you earn, the higher the rate you pay on each additional dollar. But most Australians don't fully understand how the brackets actually work, which leads to a lot of confusion (and frustration) at tax time.
 
 This guide breaks down the 2025–26 Australian tax brackets in plain English, with real examples.
 
