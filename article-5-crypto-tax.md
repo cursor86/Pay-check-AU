@@ -32,7 +32,7 @@ A taxable event occurs when you **dispose** of cryptocurrency. This includes:
 What is generally **not** a taxable event:
 - Buying crypto with AUD (you're acquiring, not disposing)
 - Transferring crypto between your own wallets
-- HODLing (simply holding crypto that increases in value — no tax until you sell)
+- HODLing (simply holding crypto that increases in value — no tax until you sell).
 
 ---
 
