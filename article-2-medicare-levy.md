@@ -49,7 +49,7 @@ If your income falls below these thresholds, you either pay no levy or a reduced
 This is separate from the standard Medicare Levy and often confuses people. The Medicare Levy Surcharge (MLS) is an *additional* charge on top of the standard 2% — and it only applies if:
 
 1. You earn above $93,000 as a single (or $186,000 as a family) for 2025–26, AND
-2. You do **not** hold an approved private hospital health insurance policy
+2. You do **not** hold an approved private hospital health insurance policy.
 
 The surcharge rates are:
 
