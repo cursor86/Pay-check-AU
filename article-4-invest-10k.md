@@ -56,7 +56,7 @@ For most retail investors, VDHG alone is a perfectly adequate long-term investme
 
 Park $2,000 in a term deposit or high-yield savings account earning 4–4.5%. This provides:
 - A liquid buffer if you need cash unexpectedly
-- A stable, predictable return while you wait for better entry points in the market
+- A stable, predictable return while you wait for better entry points in the market.
 - Peace of mind that not everything is at market risk
 
 Compare rates at RateCity or Canstar before committing.
