@@ -104,7 +104,7 @@ The ATO requires you to keep records of every crypto transaction, including:
 - Exchange or wallet fees
 - Bank records and exchange statements
 
-Most Australian exchanges provide a downloadable transaction history — export this at the end of each financial year and store it securely. You're required to keep records for at least 5 years after lodging your return.
+Most Australian exchanges provide a downloadable transaction history — export this at the end of each financial year and store it securely. You're required to keep records for at least 5 years after lodging your return
 
 ---
 
