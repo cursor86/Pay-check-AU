@@ -4,7 +4,7 @@
 
 ---
 
-Every year, millions of Australians pay the Medicare Levy without really understanding what it is, who pays it, or whether they can reduce or avoid it. If you've noticed a 2% deduction on your payslip or tax return and wondered what it's for — this guide is for you.
+Every year, millions of Australians pay the Medicare Levy without really understanding what it is, who pays it,or whether they can reduce or avoid it. If you've noticed a 2% deduction on your payslip or tax return and wondered what it's for — this guide is for you.
 
 ---
 
