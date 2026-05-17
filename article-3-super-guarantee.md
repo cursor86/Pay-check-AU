@@ -20,7 +20,7 @@ The SG is calculated as a percentage of your Ordinary Time Earnings (OTE) — ro
 
 The Super Guarantee rate for the 2025–26 financial year is **12%**.
 
-This is the result of a legislated schedule of increases that has been gradually lifting the SG rate from 9.5% in 2021 toward 12% — which was reached in 2025–26.
+This is the result of a legislated schedule of increases that has been gradually lifting the SG rate from 9.5% in 2021 toward 12% — which was reached in 2025–26
 
 ### SG Rate History:
 | Financial Year | SG Rate |
